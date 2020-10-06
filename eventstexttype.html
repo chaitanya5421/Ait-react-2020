@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form name="form">
+      <input
+        type="text"
+        placeholder="Enter number"
+        name="number"
+        id="txtnumber"
+      />
+      <p id="para"></p>
+      <button type="submit" onclick="onclickevent(event)">Login</button>
+      <h4>keypress</h4>
+      <input
+        type="text"
+        onkeypress="return event.charCode >= 48 && event.charCode <= 57"
+      />
+    </form>
+    <script>
+      function onclickevent(e) {
+        e.preventDefault();
+        var txtvalue = document.form.number.value;
+        console.log(txtvalue);
+        if (isNaN(txtvalue)) {
+          //   console.log("place enter a numeric value");
+          document.getElementById("para").innerHTML =
+            "place enter a numeric value";
+        } else {
+          //   console.log("entered a valid value");
+          document.getElementById("para").innerHTML = "entered a valid value";
+        }
+      }
+    </script>
+  </body>
+</html>

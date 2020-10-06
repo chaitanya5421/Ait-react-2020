@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Events in js</title>
+  </head>
+  <style>
+    body {
+      text-align: center;
+    }
+    .button {
+      background-color: aqua;
+      border: none;
+      color: white;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+    }
+  </style>
+  <body>
+    <h1>use of click in events</h1>
+    <p>click triggers an action onclick</p>
+
+    <h2>Mouse events</h2>
+    <input
+      type="button"
+      class="button"
+      value="click function"
+      onclick="mouseclick()"
+    />
+    <input
+      type="button"
+      class="button"
+      value="doubleclick this"
+      ondblclick="ondoubleclick()"
+    />
+    <input
+      type="button"
+      class="button"
+      value="rightclick Here"
+      oncontextmenu="rightclicked(event)"
+    /><br />
+
+    <input
+      type="button"
+      class="button"
+      value="mouseover Here"
+      onmouseover="mouseover()"
+    />
+    <input
+      type="button"
+      class="button"
+      value="mouseleave Here"
+      onmouseout="mouseleave()"
+    />
+    <br />
+    <input
+      type="button"
+      class="button"
+      value="mouse move Here"
+      onmousemove="mousemovehere()"
+    />
+    <br />
+    <h2>key events</h2>
+    <label>keypress</label>
+    <input type="text" id="keypress" onkeypress="keypress()" />
+    <label>keyup</label>
+    <input type="text" id="keyup" onkeyup="keyup()" />
+    <label>keydown</label>
+    <input type="text" id="keydown" onkeydown="keydown()" />
+    <p id="para"></p>
+
+    <h2>Form Events</h2>
+    <input type="text" id="focus" onfocus="focuson()" />
+    <input type="text" id="blur" onblur="bluron()" />
+    <input type="text" id="change" /> -->
+
+   
+
+       <button type="submit" onclick="onclickevent(event)">Login</button>
+    </form>
+
+    <script>
+        function mouseclick() {
+          alert("click event");
+        }
+        function ondoubleclick() {
+          alert("double click event");
+        }
+        function rightclicked() {
+          e.preventDefault();
+          alert("right  click event");
+        }
+
+        function mouseover() {
+          alert("mouse over event");
+        }
+
+        function mouseleave() {
+          alert("mouse leave event");
+        }
+
+        var mousemovehere = function () {
+          alert("mouse move event");
+        };
+
+        function keypress() {
+          var keyPress = document.getElementById("keypress").value;
+          document.getElementById("para").innerHTML =
+            "you have pressed: " + keyPress;
+        }
+
+        function keydown() {
+          var keydown = document.getElementById("keydown").value;
+          document.getElementById("para").innerHTML =
+            "you have pressed: " + keydown;
+        }
+
+        function focuson() {
+          document.getElementById("focus").style.backgroundColor = "red";
+        }
+
+        function bluron() {
+          document.getElementById("blur").style.backgroundColor = "green";
+        }
+
+        document.getElementById("change").addEventListener("change", myfunction);
+        function myfunction() {
+          var x = document.getElementById("change");
+          x.value = x.value.toUpperCase();
+        }
+    </script>
+  </body>
+</html>
