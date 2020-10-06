@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      form {
+        border: 3px solid #f1f1f1;
+        width: 300px;
+        margin: 0 auto;
+      }
+
+      input[type="text"],
+      input[type="password"] {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+      }
+
+      button {
+        background-color: #4caf50;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+      }
+
+      button:hover {
+        opacity: 0.8;
+      }
+
+      .cancelbtn {
+        width: auto;
+        padding: 10px 18px;
+        background-color: #f44336;
+      }
+
+      .imgcontainer {
+        text-align: center;
+        margin: 24px 0 12px 0;
+      }
+
+      img.avatar {
+        width: 50%;
+        border-radius: 0%;
+      }
+
+      .container {
+        padding: 16px;
+      }
+
+      span.psw {
+        float: right;
+        padding-top: 16px;
+      }
+
+      /* Change styles for span and cancel button on extra small screens */
+      @media screen and (max-width: 300px) {
+        span.psw {
+          display: block;
+          float: none;
+        }
+
+        .cancelbtn {
+          width: 100%;
+        }
+
+        .errorstyles {
+          color: red;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- <h2>Login Form</h2> -->
+
+    <form action="#" method="post">
+      <div class="imgcontainer">
+        <img
+          src="https://www.achieversit.com/img/logo1.jpg"
+          alt="Avatar"
+          class="avatar"
+        />
+      </div>
+
+      <div class="container">
+        <label for="uname"><b>Username</b></label>
+        <input
+          type="text"
+          placeholder="Enter Username"
+          id="username"
+          class="errorstyles"
+          name="uname"
+          required
+        />
+        <p id="usererror" class="errorstyles"></p>
+
+        <label for="psw"><b>Password</b></label>
+        <input
+          type="password"
+          placeholder="Enter Password"
+          name="psw"
+          id="pwd"
+          required
+        />
+
+        <p id="userpassword"></p>
+        <label for="psw"><b></b></label>
+        <label><b>upload resume</b></label>
+        <input type="file" name="file-input" id="resumedata" />
+        <p id="choosefileerror"></p>
+        <button type="submit" onclick="onclickevent(event)">Login</button>
+        <label>
+          <input type="checkbox" checked="checked" name="remember" /> Remember
+          me
+        </label>
+      </div>
+
+      <div class="container" style="background-color: #f1f1f1">
+        <button type="button" class="cancelbtn">Cancel</button>
+        <span class="psw">Forgot <a href="#">password?</a></span>
+      </div>
+    </form>
+    <script>
+      function onclickevent(e) {
+        e.preventDefault();
+        let userName, password;
+        userName = document.getElementById("username").value;
+        password = document.getElementById("pwd").value;
+
+        if (userName == "") {
+          document.getElementById("usererror").innerText =
+            "please enter the userName";
+          document.getElementById("usererror").style.color = "red";
+          document.getElementById("username").style.borderColor = "red";
+        } else {
+          document.getElementById("usererror").innerText = "";
+          document.getElementById("usererror").style.color = "";
+          document.getElementById("username").style.borderColor = "";
+        }
+
+        if (password == "") {
+          document.getElementById("userpassword").innerText =
+            "please enter the password";
+          document.getElementById("userpassword").style.color = "red";
+          document.getElementById("pwd").style.borderColor = "red";
+        } else {
+          document.getElementById("userpassword").innerText = "";
+          document.getElementById("userpassword").style.color = "";
+          document.getElementById("pwd").style.borderColor = "";
+        }
+
+        if (resumedata.value == "") {
+          document.getElementById("choosefileerror").innerHTML =
+            "please upload the file";
+          document.getElementById("choosefileerror").style.color = "red";
+        }
+
+        var resumeData = document.getElementById("resumedata").value;
+        console.log(resumeData);
+        // let comparesumedata = resumeData.split(".");
+        // alert(comparesumedata[1]);
+        var regx = /.pdf|.doc|docx/;
+        if (regx.test(resumeData)) {
+          document.getElementById("choosefileerror").innerHTML = "";
+          console.log("enter ");
+        } else {
+          console.log("not working");
+          document.getElementById("choosefileerror").innerHTML =
+            "please select the valid file";
+          document.getElementById("choosefileerror").style.color = "red";
+        }
+
+        // if (
+        //   // regx.test(resumedata)
+        //   comparesumedata[1] == "pdf" ||
+        //   comparesumedata[1] == "doc" ||
+        //   comparesumedata[1] == "docx"
+        // ) {
+        //   document.getElementById("choosefileerror").innerHTML = "";
+        //   console.log("enter ");
+        // } else {
+        //   document.getElementById("choosefileerror").innerHTML =
+        //     "please select the valid file";
+        //   document.getElementById("choosefileerror").style.color = "red";
+        // }
+      }
+    </script>
+  </body>
+</html>
