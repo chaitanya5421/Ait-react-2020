@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form name="form">
+      <input type="text" name="keypress" onkeypress="keypresson()" />
+    </form>
+
+    <script>
+      function keypresson() {
+        var keyPress = document.form.keypress.value;
+        var keypressed = keyPress.split("");
+        console.log(keypressed);
+        var [arrayvalue] = keypressed.slice(-1);
+        console.log(arrayvalue);
+
+        if (isNaN(arrayvalue)) {
+          console.log("enter numeric value");
+        } else {
+          console.log("entered numeric value");
+        }
+      }
+    </script>
+  </body>
+</html>
