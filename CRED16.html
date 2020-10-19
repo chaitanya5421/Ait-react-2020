@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRED Operation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <Style>
+        body{
+            text-align: center;
+        }
+        .textcenter{
+            margin: auto;
+            text-align: center;
+        }
+        table{
+            border: 1px solid gray;
+        }
+        .borderclass{
+            border: 1px solid gray;
+        }
+        th{
+            padding: 20px;
+            border: 1px solid gray;
+            background-color: hotpink;
+        }
+        td{
+            border:1px solid gray;
+            padding:20px;
+            background-color: wheat;
+        }
+        .mystyle{
+            border :2px solid blue;
+        }
+    </Style>
+</head>
+<body onload=two()>
+    <h1>CRED Operation</h1>
+    <div class="container">
+            <div>
+                <lable>itemname</lable>
+                <input type="text" class="form" id="name">
+                <lable>email</lable>
+                <input type="text" class="form" id="email">
+                <lable>mobile</lable>
+                <input type="text" class="form" id="number">
+                <button onclick="one()">add</button>
+            </div>
+           
+        <div> 
+            <br><br>
+            <table class="textcenter">
+                <thead class="borderclass">
+                    <tr class="borderclass">
+                        <th>NAME</th>
+                        <th>EMAIL</th>
+                        <th>MOBILE</th>
+                        <th>ACTION</th>
+                    </tr>
+                </thead>
+                <tbody id="allitem">
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script>
+            var items = [
+            {name:'chaitanya',email:'chaitu@gmail.com',number:9177190},
+            {name:'ganesh',email:'ganesh@gmail.com', number:1245780},
+            {name:'ramesh',email:'ramesh@gmail.com', number:9855474},
+            {name:'suresh',email:'suresh@gmail.com', number:4587154},
+            {name:'harish',email:'harish@gmail.com', number:9548722}
+            ]
+            function two(){
+                var data = "";
+                for(var i=0;i<items.length;i++){
+                    data = data+"<tr>";
+                    data = data +"<td>"+items[i].name + "</td>";
+                    data = data +"<td>"+items[i].email + "</td>";
+                    data = data +"<td>"+items[i].number + "</td>";
+
+
+                    data = data +"<td> <button onclick='deleteitem("+i+")'<i class='glyphicon glyphicon-trash'></i>delete</button> </td>";
+                    data = data + "</tr>";
+                }
+                document.getElementById("allitem").innerHTML=data;
+            }
+
+            function deleteitem(index){
+                var deletesure = confirm("are you sure");
+                if(deletesure == true){
+                    items.splice(index,1);
+                    two();
+                    alert("items deleted");
+                }
+            }
+
+            function one(){
+                var Sname = document.getElementById("name").value;
+                var Email = document.getElementById("email").value;
+                var Number = document.getElementById('number').value;
+
+                if((Sname != "") && (Email != "") && (Number != "")){
+                document.getElementById("name").value = "";
+                document.getElementById("email").value = "";
+                document.getElementById("number").value = "";
+
+                    var newitem = {"name":Sname, "email":Email,"number":Number};
+                    console.log(newitem);
+                    items = items.concat(newitem);
+                    two();
+                }
+            }
+    </script>
+</body>
+</html>
