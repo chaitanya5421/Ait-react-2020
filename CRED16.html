@@ -80,12 +80,32 @@
                     data = data +"<td>"+items[i].email + "</td>";
                     data = data +"<td>"+items[i].number + "</td>";
 
-
-                    data = data +"<td> <button onclick='deleteitem("+i+")'<i class='glyphicon glyphicon-trash'></i>delete</button> </td>";
+                    data = data + "<td> <button onclick='edititem(" + i + ")'<i class='glyphicon glyphicon-trash'></i>edit</button> </td>";
+                    data = data +"<td> <button onclick='deleteitem("+ i +")'<i class='glyphicon glyphicon-trash'></i>delete</button> </td>";
                     data = data + "</tr>";
                 }
                 document.getElementById("allitem").innerHTML=data;
             }
+
+             function edititem(index){
+                 var promptname = prompt('enter your name',items[index].name);
+                console.log(promptname);
+                items[index].name = promptname;
+
+                var promptemail = prompt('enter your email', items[index].email);
+                 console.log(promptemail);
+                 items[index].email = promptemail;
+
+                var promptnumber = prompt('enter your mobile', items[index].number);
+                 console.log(promptnumber);
+                 items[index].number = promptnumber;
+                two();
+             }
+                
+
+
+
+             
 
             function deleteitem(index){
                 var deletesure = confirm("are you sure");
@@ -95,6 +115,7 @@
                     alert("items deleted");
                 }
             }
+
 
             function one(){
                 var Sname = document.getElementById("name").value;
